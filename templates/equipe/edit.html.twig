@@ -1,17 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Equipe{% endblock %}
+{% block title %}Modifier l'equipe{% endblock %}
 
 {% block body %}
-<div class="contanier d-flex justify-items-center align-items-center flex-column">
 
-    <h1>Edit Equipe</h1>
+<h1 class="text-center">Modifier l'equipe</h1>
 
-    {{ include('equipe/_form.html.twig', {'button_label': 'Sauvegarder'}) }}
+{{ include('equipe/_form.html.twig', {'button_label': 'Sauvegarder'}) }}
 
-    <a class="btn btn-primary mt-2" href="{{ path('equipe_index') }}">Affiches les équipes</a>
-
-    {#{{ include('equipe/_delete_form.html.twig') }}#}
-</div>
-
+<a class="btn btn-primary mt-2 d-block w-25 mx-auto" href="{{ path('equipe_index') }}">Afficher les équipes</a>
+{#{{ include('equipe/_delete_form.html.twig') }}#}
 {% endblock %}

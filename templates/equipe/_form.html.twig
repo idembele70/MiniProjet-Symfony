@@ -1,29 +1,29 @@
 {{ form_start(form) }}
 <div class="container">
-    <div class="row">
+    <div class="row d-block">
         <div class="col-xs-3 mx-auto">
             <div class="form-group">
                 <label for="{{form.nomEquipe.vars.id}}">Nom de l'equipe : </label>
                 <input type="text" class="form-control" name="{{form.nomEquipe.vars.full_name}}"
                     id="{{form.nomEquipe.vars.id}}" value="{{form.nomEquipe.vars.value}}">
             </div>
-            <div class="form-group">
+            {{form_row(form.entraineur, {'attr': {'class' : 'form-control my-2' } })}}
+            {# <div class="form-group">
                 <label for="{{form.entraineur.vars.id}}">Nom de l'entraineur : </label>
-            {% if form.entraineur.vars.value %}
+                {% if form.entraineur.vars.value %}
                 <input type="text" class="form-control" name="{{form.entraineur.vars.full_name}}"
                     id="{{form.entraineur.vars.id}}">
-            </div>
-            {% else %}
+                {% else %}
                 <input type="text" class="form-control d-none" name="{{form.entraineur.vars.full_name}}"
                     id="{{form.entraineur.vars.id}}">
                 🚫
-                {% endif %}
+                {% endif %}#}
             </div>
             {% do form.entraineur.setRendered %}
             {% do form.nomEquipe.setRendered %}
-            <div class="d-flex" >
-                <button class="btn btn-success mx-auto">{{ button_label|default('Sauvegarder') }}</button>{{ form_end(form) }}
-            </div>
+
+            <button class="btn btn-success mx-auto">{{ button_label|default('Sauvegarder') }}</button>{{ form_end(form)
+            }}
         </div>
     </div>
 </div>

@@ -3,28 +3,23 @@
 {% block title %}Entraineur{% endblock %}
 
 {% block body %}
-    <h1>Entraineur</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-3 mx-auto bg-dark text-white text-center">
+            <h1>Entraineur</h1>
+            <div class="card bg-dark" style="width: 18rem;">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item bg-dark">Id : {{ entraineur.id }}</li>
+                    <li class="list-group-item bg-dark">Préom de l'entraineur : {{ entraineur.prenomEntraineur }}</li>
+                    <li class="list-group-item bg-dark">Nom de l'entraineur : {{ entraineur.nomEntraineur }}</li>
+                    <li class="list-group-item bg-dark">Equipe : {{entraineur.getIdEquipe() }} </li>
+                    <a class="btn btn-primary my-2 w-75 mx-auto" href="{{ path('entraineur_index') }}">Afficher les appareils</a>
+                    <a class="btn btn-info my-2 w-50 mx-auto" href="{{ path('entraineur_edit', {'id': entraineur.id}) }}">Modifier</a>
+                    {{ include('entraineur/_delete_form.html.twig') }}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ entraineur.id }}</td>
-            </tr>
-            <tr>
-                <th>NomEntraineur</th>
-                <td>{{ entraineur.nomEntraineur }}</td>
-            </tr>
-            <tr>
-                <th>PrenomEntraineur</th>
-                <td>{{ entraineur.prenomEntraineur }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <a href="{{ path('entraineur_index') }}">back to list</a>
-
-    <a href="{{ path('entraineur_edit', {'id': entraineur.id}) }}">edit</a>
-
-    {{ include('entraineur/_delete_form.html.twig') }}
 {% endblock %}

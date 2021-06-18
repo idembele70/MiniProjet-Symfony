@@ -17,14 +17,18 @@
                         {% for joueur in joueurs %}
                         {% if joueur.equipe.id == equipe.id %}
                         - {{ joueur.getPrenomJoueur()}}
-                         {{ joueur.getNomJoueur()}}
+                        {{ joueur.getNomJoueur()}}
                         {% endif %}
                         {% endfor %}
                     </li>
-
+                    {% if equipe.getEntraineur() %}
+                    <li class="list-group-item bg-dark">Nom de l'entraineur :</li>
+                    <li class="list-group-item bg-dark"> {{equipe.getEntraineur()}} </li>
+                    {% else %}
+                    <li class="list-group-item bg-dark">Cet équipe à pas d'entraineur</li>
+                    {% endif %}
                 </ul>
             </div>
-
             <a class="btn btn-primary my-1" href="{{ path('equipe_index') }}">Afficher les équipes</a>
             <a class="btn btn-info my-1" href="{{ path('equipe_edit', {'id': equipe.id}) }}">edit</a>
             {# {{ include('equipe/_delete_form.html.twig') }} #}

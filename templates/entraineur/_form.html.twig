@@ -1,6 +1,15 @@
 {{ form_start(form) }}
-{{ form_row(form.nomEntraineur, {'attr' : {'class' : 'form-control'}  } ) }}
-{{ form_row(form.prenomEntraineur, {'attr' : {'class' : 'form-control'}  } ) }}
-{{ form_row(form.idEquipe) }}
-<button class="btn">{{ button_label|default('Save') }}</button>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-3 mx-auto">
+            {{ form_row(form.nomEntraineur, {'attr' : {'class' : 'form-control'} } ) }}
+            {{ form_row(form.prenomEntraineur, {'attr' : {'class' : 'form-control'} } ) }}
+            {{ form_label(form.idEquipe, ' nom Equipe : ') }}
+            {{ form_widget(form.idEquipe, {'attr' : { 'class' : 'form-control my-2' }}) }}
+
+                <button class="btn btn-success mb-2 d-block mx-auto">{{ button_label|default('Sauvegarder') }}</button>
+
+        </div>
+    </div>
+</div>
 {{ form_end(form) }}
