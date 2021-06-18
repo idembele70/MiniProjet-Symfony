@@ -1,0 +1,6 @@
+{{ form_start(form) }}
+{{ form_row(form.nomEntraineur, {'attr' : {'class' : 'form-control'}  } ) }}
+{{ form_row(form.prenomEntraineur, {'attr' : {'class' : 'form-control'}  } ) }}
+{{ form_row(form.idEquipe) }}
+<button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}

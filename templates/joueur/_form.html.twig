@@ -10,27 +10,21 @@
         value="{{form.nomJoueur.vars.value}}">
 </div>
 
-{{form_row(form.equipe)}}
+{{form_row(form.equipe, {'attr' : {'class' : 'form-control'} } )}}
 
-{% if form.equipe.vars.value %}
-{#
 <div class="form-group">
     <label for="{{form.numeroDeMaillot.vars.id}}">Numéro de maillot :</label>
-    <input type="range" class="form-control" name="{{form.numeroDeMaillot.vars.full_name}}"
-        id="{{form.numeroDeMaillot.vars.id}}" value="{{form.numeroDeMaillot.vars.value}}">
+    {% if form.numeroDeMaillot.vars.value %}
+    <input type="number" class="form-control" name="{{form.numeroDeMaillot.vars.full_name}}"
+        id="{{form.numeroDeMaillot.vars.id}}" value="{{form.numeroDeMaillot.vars.value }}">
+    {% else %}
+    <input type="number" class="form-control" name="{{form.numeroDeMaillot.vars.full_name}}"
+        id="{{form.numeroDeMaillot.vars.id}}" value="{{random(0,99)}}">
+    {% endif %}
 </div>
-#}
-{% else %}
-<div class="form-group">
-    <label for="{{form.numeroDeMaillot.vars.id}}">Numéro de maillot :</label>
-    <input type="range" class="form-control d-none" name="{{form.numeroDeMaillot.vars.full_name}}"
-        id="{{form.numeroDeMaillot.vars.id}}" value="{{form.numeroDeMaillot.vars.value}}">
-    🚫
-</div>
-{% endif %}
 {% do form.nomJoueur.setRendered %}
 {% do form.prenomJoueur.setRendered %}
 {% do form.numeroDeMaillot.setRendered %}
-{% do form.equipe.setRendered %}
+{# do form.equipe.setRendered #}
 <button class="btn btn-success mx-auto">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}

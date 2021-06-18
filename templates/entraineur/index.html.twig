@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Entraineur index{% endblock %}
+
+{% block body %}
+<h1>Tout les entraineurs</h1>
+<a class="btn btn-primary w-25 mx-auto" href="{{ path('entraineur_new') }}">Créez un nouveau entraineur</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nom de l'entraineur</th>
+            <th>Prenom de l'entraineur</th>
+            <th colspan="2">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for entraineur in entraineurs %}
+        <tr>
+            <td>{{ entraineur.id }}</td>
+            <td>{{ entraineur.nomEntraineur }}</td>
+            <td>{{ entraineur.prenomEntraineur }}</td>
+            <td>
+                <a href="{{ path('entraineur_show', {'id': entraineur.id}) }}">Affiche</a>
+                <a href="{{ path('entraineur_edit', {'id': entraineur.id}) }}">Modifier</a>
+            </td>
+        </tr>
+        {% else %}
+        <tr class="my-2">
+            <td class="alert alert-info text-center" colspan="4">Il n'existe aucun entraineur</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Equipe{% endblock %}
+
+{% block body %}
+<div class="contanier d-flex justify-items-center align-items-center flex-column">
+
+    <h1>Edit Equipe</h1>
+
+    {{ include('equipe/_form.html.twig', {'button_label': 'Sauvegarder'}) }}
+
+    <a class="btn btn-primary mt-2" href="{{ path('equipe_index') }}">Affiches les équipes</a>
+
+    {#{{ include('equipe/_delete_form.html.twig') }}#}
+</div>
+
+{% endblock %}

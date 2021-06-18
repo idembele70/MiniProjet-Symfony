@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Equipe{% endblock %}
+
+{% block body %}
+<h1 class="text-center" >Creer Ton equipe !</h1>
+
+{{ include('equipe/_form.html.twig') }}
+
+<a class="mx-auto btn btn-primary" href="{{ path('equipe_index') }}">Affiche toute les équipes</a>
+{% endblock %}

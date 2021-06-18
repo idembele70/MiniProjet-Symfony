@@ -25,19 +25,14 @@ class Equipe
     private $nomEquipe;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $nomEntraineur;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $prenomEntraineur;
-
-    /**
      * @ORM\OneToMany(targetEntity=Joueur::class, mappedBy="equipe")
      */
     private $idJoueur;
+
+    /**
+     * @ORM\OneToOne(targetEntity=Entraineur::class, mappedBy="idEquipe", cascade={"persist", "remove"})
+     */
+    private $entraineur;
 
     public function __construct()
     {
@@ -115,5 +110,29 @@ class Equipe
         return $this;
     }
 
+    public function getEntraineur(): ?Entraineur
+    {
+        return $this->entraineur;
+    }
 
+    public function setEntraineur(?Entraineur $entraineur): self
+    {
+        // unset the owning side of the relation if necessary
+        if ($entraineur === null && $this->entraineur !== null) {
+            $this->entraineur->setIdEquipe(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($entraineur !== null && $entraineur->getIdEquipe() !== $this) {
+            $entraineur->setIdEquipe($this);
+        }
+
+        $this->entraineur = $entraineur;
+
+        return $this;
+    }
+    public function __toString()
+    {
+        return $this->getNomEquipe();
+    }
 }
