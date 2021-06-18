@@ -53,7 +53,7 @@ class JoueurController extends AbstractController
      */
     public function show(Joueur $joueur): Response
     {
-        return $this->render('joueur/show.html.twig', [
+        return $this->render('joueur/show_joueur.html.twig', [
             'joueur' => $joueur,
         ]);
     }

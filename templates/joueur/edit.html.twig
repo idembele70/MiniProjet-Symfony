@@ -5,14 +5,13 @@
 {% block body %}
 <div class="container ">
     <div class="row">
-        <div class="col-xs-3 mx-auto">
+        <div class="col-xs-3 mx-auto my-1">
             <h1>Mettre a jour les informations </h1>
-            
-            {{ include('joueur/_form.html.twig', {'button_label': 'Update'}) }}
-            
-            <a href="{{ path('joueur_index') }}">back to list</a>
-            
-            {{ include('joueur/_delete_form.html.twig') }}
+            {{ include('joueur/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+
+            <a class="btn btn-primary text-white mx-auto" href="{{ path('joueur_index') }}">back to list</a>
+
+            <div class="btn btn-danger"> {{ include('joueur/_delete_form.html.twig') }}</div>
         </div>
     </div>
 </div>

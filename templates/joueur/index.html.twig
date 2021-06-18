@@ -3,7 +3,8 @@
 {% block title %}Joueur index{% endblock %}
 
 {% block body %}
-<h1>Joueur index</h1>
+<h1>Tout les Joueurs</h1>
+<a class="btn btn-info w-25 mx-auto" href="{{ path('joueur_new') }}">Ajouter un nouveau Joueur</a>
 
 <table class="table text-center">
     <thead>
@@ -13,12 +14,12 @@
             <th>Nom</th>
             <th>Equipe</th>
             <th>NumeroDeMaillot</th>
-            <th colspan="2" >actions</th>
+            <th colspan="2">actions</th>
         </tr>
     </thead>
-    <tbody  >
+    <tbody>
         {% for joueur in joueurs %}
-        <tr >
+        <tr>
             <td>{{ joueur.id }}</td>
             <td>{{ joueur.nomJoueur }}</td>
             <td>{{ joueur.prenomJoueur }}</td>
@@ -29,20 +30,19 @@
             <td>🚫</td>
             <td>🚫</td>
             {% endif %}
-            <td >
-                <a  href="{{ path('joueur_show', {'id': joueur.id}) }}">Plus d'info</a>
+            <td>
+                <a href="{{ path('joueur_show', {'id': joueur.id}) }}">Plus d'info</a>
             </td>
-            <td  >
-                <a  href="{{ path('joueur_edit', {'id': joueur.id}) }}">Modifier</a>
+            <td>
+                <a href="{{ path('joueur_edit', {'id': joueur.id}) }}">Modifier</a>
             </td>
         </tr>
         {% else %}
         <tr>
-            <td colspan="5">no records found</td>
+            <td colspan="5">Aucun n'a été trouvé </td>
         </tr>
         {% endfor %}
     </tbody>
 </table>
 
-<a href="{{ path('joueur_new') }}">Create new</a>
 {% endblock %}

@@ -3,9 +3,17 @@
 {% block title %}New Joueur{% endblock %}
 
 {% block body %}
-    <h1>Create new Joueur</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-2 mx-auto">
+            <h1>Créer un nouveau joueur</h1>
 
-    {{ include('joueur/_form.html.twig') }}
-
-    <a href="{{ path('joueur_index') }}">back to list</a>
+            {{ include('joueur/_form.html.twig') }}
+            
+            <a href="{{ path('joueur_index') }}">back to list</a>
+        </div>
+    </div>
+    
+</div>
 {% endblock %}
+
