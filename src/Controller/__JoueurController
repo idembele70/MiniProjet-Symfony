@@ -1,0 +1,48 @@
+
+
+namespace App\Controller;
+
+use App\Entity\Joueur;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
+
+class JoueurController extends AbstractController
+{
+    /**
+     * @Route("/joueur", name="joueur")
+     */
+    public function index(): Response
+    {
+        return $this->render('joueur/index.html.twig', [
+            'controller_name' => 'JoueurController',
+        ]);
+    }
+    public function add()
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $joueur1 = new Joueur();
+        $joueur1->setNomJoueur("Neymar");
+        $joueur1->setPrenomJoueur("Junior");
+        $joueur1->setNumeroDeMaillot("10");
+
+        $entityManager->persist($joueur1);
+        $entityManager->flush();
+
+        return new Response("Nouveau joueur sauvegarder :: 1: .{$joueur1->getId()}");
+    }
+    public function show($id): Response
+    {
+        $repository = $this->getDoctrine()->getRepository(Joueur::class);
+        $joueur = $repository->find($id);
+        if (!$joueur) throw $this->createNotFoundException("Ce joueur n'existe pas ! $id");
+        return $this->render("joueur/show_joueur.html.twig",["joueur"=>$joueur]);
+    }
+    public function showAll()
+    {
+        $repository = $this->getDoctrine()->getRepository(Joueur::class);
+        $joueurs = $repository->findAll();
+        if (!$joueurs) throw $this->createNotFoundException("Aucun joueur n'a été trouvé !");
+        return $this->render("joueur/show_all_joueurs.html.twig", ["joueurs" => $joueurs]);
+    }
+}

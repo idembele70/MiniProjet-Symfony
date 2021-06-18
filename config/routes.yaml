@@ -1,3 +1,18 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+
+#add_joueur:
+#    path: /add_joueur
+#    controller: App\Controller\JoueurController::add
+#
+#show_joueur:
+#    path: /show_joueur/{id}
+#    controller: App\Controller\JoueurController::show
+#    requirements:
+#        id: '\d+'
+#
+#show_joueurs:
+#    path: /show_joueurs/
+#    controller: App\Controller\JoueurController::showAll
+#

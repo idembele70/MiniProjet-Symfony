@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Joueur index{% endblock %}
+
+{% block body %}
+<h1>Joueur index</h1>
+
+<table class="table text-center">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Prenom</th>
+            <th>Nom</th>
+            <th>Equipe</th>
+            <th>NumeroDeMaillot</th>
+            <th colspan="2" >actions</th>
+        </tr>
+    </thead>
+    <tbody  >
+        {% for joueur in joueurs %}
+        <tr >
+            <td>{{ joueur.id }}</td>
+            <td>{{ joueur.nomJoueur }}</td>
+            <td>{{ joueur.prenomJoueur }}</td>
+            {% if joueur.getEquipe() %}
+            <td>{{ joueur.getEquipe() }}</td>
+            <td>{{ joueur.numeroDeMaillot }}</td>
+            {% else %}
+            <td>🚫</td>
+            <td>🚫</td>
+            {% endif %}
+            <td >
+                <a  href="{{ path('joueur_show', {'id': joueur.id}) }}">Plus d'info</a>
+            </td>
+            <td  >
+                <a  href="{{ path('joueur_edit', {'id': joueur.id}) }}">Modifier</a>
+            </td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="5">no records found</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<a href="{{ path('joueur_new') }}">Create new</a>
+{% endblock %}

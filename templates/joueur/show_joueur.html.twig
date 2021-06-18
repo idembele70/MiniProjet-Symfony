@@ -1,0 +1,25 @@
+{% extends 'base.html.twig'%}
+
+{% block title %}Dembele Ibrahim{% endblock %}
+
+{% block body %}
+<div class="card mx-auto bg-dark text-light" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title text-center">{{joueur.getNomJoueur()}} {{joueur.getPrenomJoueur()}} </h5>
+        <p class="card-text">{{joueur.getEquipe()}} </p>
+    </div>
+    <ul class="list-group list-group-flush text-center">
+        <li class="list-group-item bg-dark ">Prénom : {{ joueur.getPrenomJoueur() }} </li>
+        <li class="list-group-item bg-dark">Nom : {{ joueur.getNomJoueur() }} </li>
+        {% if joueur.getEquipe() %}
+        <li class="list-group-item">Numéro de maillot : {{ joueur.getNumeroDeMaillot() }} </li>
+    </ul>
+    <div class="card-body text-center">
+        {% else %}
+        <p class="card-text">Joue avec aucune équipe National pour le moment donc il ne peut avoir de numéro de maillot
+            !</p>
+        {% endif %}
+        <a href="/show_joueur/{{ joueur.getId()}}" class="card-link">Mettre à jour ses informations</a>
+    </div>
+</div>
+{% endblock %}
