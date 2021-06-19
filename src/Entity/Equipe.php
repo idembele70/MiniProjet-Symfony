@@ -34,6 +34,7 @@ class Equipe
      */
     private $entraineur;
 
+
     public function __construct()
     {
         $this->idJoueur = new ArrayCollection();

@@ -14,12 +14,17 @@
                     <li class="list-group-item bg-dark">Nom de l'équipe : {{ equipe.nomEquipe }}</li>
                     <li class="list-group-item bg-dark">Nom des Joueurs :</li>
                     <li class="list-group-item bg-dark">
+                        {% set foo = 'false' %}
                         {% for joueur in joueurs %}
                         {% if joueur.equipe.id == equipe.id %}
                         - {{ joueur.getPrenomJoueur()}}
                         {{ joueur.getNomJoueur()}}
+                        {% set foo ='true' %}
                         {% endif %}
                         {% endfor %}
+                        {% if foo == 'false' %}
+                        Aucun
+                        {% endif %}
                     </li>
                     {% if equipe.getEntraineur() %}
                     <li class="list-group-item bg-dark">Nom de l'entraineur :</li>

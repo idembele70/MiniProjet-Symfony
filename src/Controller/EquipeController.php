@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Equipe;
 use App\Entity\Joueur;
 use App\Form\EquipeType;
+use App\Repository\EntraineurRepository;
 use App\Repository\EquipeRepository;
 use App\Repository\JoueurRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -53,8 +54,11 @@ class EquipeController extends AbstractController
     /**
      * @Route("/{id}", name="equipe_show", methods={"GET"})
      */
-    public function show(Equipe $equipe, JoueurRepository $joueurRepository): Response
-    {
+    public function show(
+        Equipe $equipe,
+        JoueurRepository $joueurRepository,
+        EntraineurRepository $entraineurRepository
+    ): Response {
         return $this->render('equipe/show.html.twig', [
             'equipe' => $equipe,
             'joueurs' => $joueurRepository->findAll(),

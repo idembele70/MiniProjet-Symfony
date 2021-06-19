@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Entity\Entraineur;
 use App\Form\EntraineurType;
 use App\Repository\EntraineurRepository;
+use Error;
+use SebastianBergmann\Environment\Console;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -38,7 +40,6 @@ class EntraineurController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($entraineur);
             $entityManager->flush();
-
             return $this->redirectToRoute('entraineur_index');
         }
 
@@ -68,8 +69,12 @@ class EntraineurController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('entraineur_index');
+            return  $this->redirectToRoute('entraineur_index');
+        } else {
+            return $this->render('entraineur/edit.html.twig', [
+                'entraineur' => $entraineur,
+                'form' => $form->createView(),
+            ]);
         }
 
         return $this->render('entraineur/edit.html.twig', [
@@ -83,7 +88,7 @@ class EntraineurController extends AbstractController
      */
     public function delete(Request $request, Entraineur $entraineur): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$entraineur->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $entraineur->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($entraineur);
             $entityManager->flush();

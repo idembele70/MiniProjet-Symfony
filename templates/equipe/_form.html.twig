@@ -22,7 +22,8 @@
             {% do form.entraineur.setRendered %}
             {% do form.nomEquipe.setRendered %}
 
-            <button class="btn btn-success mx-auto">{{ button_label|default('Sauvegarder') }}</button>{{ form_end(form)
+            <button class="btn btn-success mx-auto">{{ button_label|default('Sauvegarder') }}</button>
+            {{ form_end(form)
             }}
         </div>
     </div>
